@@ -10,6 +10,8 @@ class Note {
         this.color = color;
         this.pinned = pinned;
         this.createDate = new Date();
+        this.reminderDate = new Date(Date.now() + 1000*60*10 );
+        
         this.id = Date.now();
     }    
 }
@@ -91,6 +93,16 @@ const notesObj = new Notes();
 
 document.querySelector('#addNewNote').addEventListener('click', onNewNote);
 
+function checkForNotifications(notes) {
+    const timestamp = Date.now();
+    const notifies = notes.filter(el => Math.abs(el.reminderDate.timestamp - timestamp) < 1000 );
+    if (notifies.length > 0) {
+        // show notifications
+    }
+}
+setInterval(() => {
+    checkForNotifications();
+}, 1000);
 
 // const notesArr = notesObj.getNotes()
 
