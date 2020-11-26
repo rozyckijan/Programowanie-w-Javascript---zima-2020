@@ -1,4 +1,4 @@
-Scenariusz dla repozytorium (wykonuje pierwsza osoba):
+Scenariusz dla repozytorium (wykonuje jedna osoba):
 1. Utwórz repozytorium
 2. Dodaj współplemieńców
 3. Utwórz w gałęzi master pliki:
@@ -13,3 +13,5 @@ Scenariusz dla każdej osoby z zespołu:
 5. Utwórz nową gałąź o nazwie _inicjaly_-galeria-ladowana-dynamicznie
 6. Zmodyfikuj plik index.html i main.js o ładowanie dynamiczne zdjęć (ładowanie nie z <img src> ale za pomocą js: const img = new Image()). Grafiki powinny się ładować jedna po drugiej (nie wszystkie na raz).
 7. Zrób merge swojej gałęzi do gałęzi master.
+
+Finalnie na stronie powinno być tyle galerii zdjęć ile jest osób w zespole. Wszystkie zdjęcia powinny się ładować z poziomu Javascriptu.
