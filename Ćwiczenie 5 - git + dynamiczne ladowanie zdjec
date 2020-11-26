@@ -42,7 +42,7 @@ Scenario for every co-worker:
 1. Clone repository
 2. Create new branch named _initials_-static-gallery
 3. Modify index.html -  add image gallery with horizontal scrollbar. Images should be created as static html (5 x <img>)
-4. Merge your branch to master branche (first - merge master to your branch).
+4. Merge your branch to master branch (first - merge master to your branch).
 a) change branch to master
 b) run git pull command (to make sure we are up-to-date with remote changes)
 c) back to your branch
