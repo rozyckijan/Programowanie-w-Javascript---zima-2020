@@ -10,7 +10,14 @@ Scenariusz dla każdej osoby z zespołu:
 1. Sklonuj repozytorium
 2. Utwórz nową gałąź o nazwie _inicjaly_-galeria-statyczna
 3. Na nowej gałęzi zmodyfikuj plik index.html - dodaj statyczną przewijaną lewo-prawo galerię pięciu zdjęć (5x<img>)
-4. Zrób merge swojej gałęzi do gałęzi master (pamiętaj - najpierw master do swojej gałęzi)
+4. Zrób merge swojej gałęzi do gałęzi master (pamiętaj - najpierw master do swojej gałęzi).
+a) przejdź na gałąź master
+b) zrób git pull
+c) wróć na swoją gałąź
+d) zrób merge master do własnej gałęzi
+e) przejdź na gałąź master
+f) zrób merge własnej gałęzi do master
+g) zrób push
 5. Utwórz nową gałąź o nazwie _inicjaly_-galeria-ladowana-dynamicznie
 6. Zmodyfikuj plik index.html i main.js o ładowanie dynamiczne zdjęć Grafiki powinny się ładować jedna po drugiej (nie wszystkie na raz). Wykorzystaj zdarzenie 'load' obiektu Image.
     Tworzenie obiektu w js:
@@ -20,3 +27,35 @@ Scenariusz dla każdej osoby z zespołu:
 7. Zrób merge swojej gałęzi do gałęzi master.
 
 Finalnie na stronie powinno być tyle galerii zdjęć ile jest osób w zespole. Wszystkie zdjęcia powinny się ładować z poziomu Javascriptu.
+
+-----------------------------------------
+
+New repository (one person from team):
+1. Create empty repository (use github)
+2. Add co-workers
+3. In VSC clone repository and create new files:
+a) index.html (default html template + main.js link - at the end of <body>)
+b) main.js (empty)
+3. Make commit, push changes to github
+
+Scenario for every co-worker:
+1. Clone repository
+2. Create new branch named _initials_-static-gallery
+3. Modify index.html -  add image gallery with horizontal scrollbar. Images should be created as static html (5 x <img>)
+4. Merge your branch to master branche (first - merge master to your branch).
+a) change branch to master
+b) run git pull command (to make sure we are up-to-date with remote changes)
+c) back to your branch
+d) merge master branch to your branch
+e) change branch to master
+f) merge your branch to master branch
+g) commit/push changes
+5. Crete new branch _initials_-dynamic-gallery
+6. Modifty index.html and main.js. Delete your <img> from html and load those images dynamically using Javascript. Images should be loaded one after other. Use image 'load' event.
+    Creating image in Javascript:
+    const img = new Image();
+    img.src = '';
+    document.body.appendChild(img);
+7. Merge branch to master, push changes.
+
+At the end index.html should contain one gallery per co-worker.
