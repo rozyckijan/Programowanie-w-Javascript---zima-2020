@@ -4,6 +4,7 @@ Scenariusz dla repozytorium (wykonuje jedna osoba):
 3. Utwórz w gałęzi master pliki:
 a) index.html (domyślny szablon html + link do main.js)
 b) main.js (pusty)
+3. Zrób commit i push.
 
 Scenariusz dla każdej osoby z zespołu:
 1. Sklonuj repozytorium
@@ -11,7 +12,11 @@ Scenariusz dla każdej osoby z zespołu:
 3. Na nowej gałęzi zmodyfikuj plik index.html - dodaj statyczną przewijaną lewo-prawo galerię pięciu zdjęć (5x<img>)
 4. Zrób merge swojej gałęzi do gałęzi master (pamiętaj - najpierw master do swojej gałęzi)
 5. Utwórz nową gałąź o nazwie _inicjaly_-galeria-ladowana-dynamicznie
-6. Zmodyfikuj plik index.html i main.js o ładowanie dynamiczne zdjęć (ładowanie nie z <img src> ale za pomocą js: const img = new Image()). Grafiki powinny się ładować jedna po drugiej (nie wszystkie na raz).
+6. Zmodyfikuj plik index.html i main.js o ładowanie dynamiczne zdjęć Grafiki powinny się ładować jedna po drugiej (nie wszystkie na raz). Wykorzystaj zdarzenie 'load' obiektu Image.
+    Tworzenie obiektu w js:
+    const img = new Image();
+    img.src = '';
+    document.body.appendChild(img);
 7. Zrób merge swojej gałęzi do gałęzi master.
 
 Finalnie na stronie powinno być tyle galerii zdjęć ile jest osób w zespole. Wszystkie zdjęcia powinny się ładować z poziomu Javascriptu.
