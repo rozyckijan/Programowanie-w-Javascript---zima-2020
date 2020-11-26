@@ -5,7 +5,7 @@ const ball = {
     y: 0
 };
 function  onDeviceOrientationChange(ev) {
-    console.log(ev);
+    console.log('device orientation ev', ev);
 }
 function AppInit() {
     const ballStartXPos = Math.random() * window.innerWidth;
