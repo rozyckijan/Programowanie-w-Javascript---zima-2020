@@ -4,16 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteKeep</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section>
-        Title <input type="text" name="" id="noteTitle"><br>
-        Content <textarea id="noteContent"></textarea><br>
-        <button id="noteAdd">Add</button>
+    <header>
+    <div class="newNote">
+        <div class="title"></div>
+        <h2>Title</h2>
+        <input type="text" name="" id="noteTitle">
+    </div>
+        <div class="content"></div>
+        <h2>Content</h2>
+        <textarea id="noteContent"></textarea><br>
+    </div>
+        <div class="pin">
+        Pinned<input type="checkbox" id="notePinned" name="Pin" value="0">
+        <input type="color" id="noteColor" name="noteColor" value="#9999ff">
+        </div><br>
+        <button id="newNoteBtn">Add</button>
+    </div>
+</header>
+    <notes>
+    <section id="allNote">
     </section>
-    <main>
-
-    </main>
+    </notes>
     <script src="main.js"></script>
 </body>
 </html>

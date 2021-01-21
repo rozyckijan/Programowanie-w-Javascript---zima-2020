@@ -1,90 +1,109 @@
-// przykładowa architektura aplikacji NoteKeep
 class Note {
-    constructor(title, description, pinned, color) {
+    constructor(title, content, color, pinned = false) {        
+        this.title = title;
+        this.content = content;
+        this.color = color;
+        this.pinned = isPinned();
+        this.createDate = new Date();
         this.id = 'id' + Math.random()*10000;
-        this.title = title //itd
-        this.createDate = new Date()
     }
 }
-
-const n1 = new Note('title', 'descrip', true, 'red')
 
 class Notes {
     constructor() {
         this.db = new Db();
-        this.htmlObj = new UI();
-        this.notes = this.db.get();
+        this.notesArr = this.db.get(); 
+        this.notesUI = new NotesUI();
     }
-
     addNote(note) {
-        this.notes.push(note);
-        this.db.save(this.notes);
-        this.htmlObj.addNote(note);
+        this.notesArr.push(note);
+        this.db.save(this.notesArr);
+        this.notesUI.addNoteHtml(note);
     }
-
     removeNote(id) {
-        const note = this.getNote(id);
-        // remove note
+        const a = this.notesArr.filter(el => el.id != id);   
+        this.db.save(a);
     }
-    getNotes() {
-        return this.notes;
-    }
-    getNote(id) {
-        return this.notes.find(el =>el.id === id)
-    }
-}
 
-// db.js
-class Db {
-    constructor()  {
-        this.notesKey = 'notes';
-    }
-    save(notes){
-        // localStorage.setItem(this.notesKey)
+    getNote(id) {
+        const a = this.notesArr.find(el => el.id === id);
+        console.log(a);
+        return this.notesArr.find(el => el.id === id);
     }
     get() {
-        // return localStorage.getItem(this.notesKey)
+        return [...this.notesArr];
+    }
+    pinnedNote(id) {
+        this.index = this.notesArr.findIndex(element => {element.id == id});
+        this.notesArr[this.index].pinned = !this.notesArr[this.index].pinned;
+        this.db.save(this.notesArr);
     }
 }
+class Db {
+    constructor() {
+        this.lsNotesKey = 'notes';
+    }
+    save(notes) {
+            localStorage.setItem(this.lsNotesKey, JSON.stringify(notes));
+    }
+    get() {
+        const notesFromLocalStorage = JSON.parse(localStorage.getItem(this.lsNotesKey));
 
+        if (notesFromLocalStorage)
+        {
+            const convertedNotes = notesFromLocalStorage.map ( notes => {
+                notes.createDate = new Date(notes.createDate);
+                return notes;
+            });
+            return convertedNotes;
+        }
 
-class UI {
+        else return [];
+    }
+}
+class NotesUI {
     constructor(notesEl = 'section') {
         this.notesObj = document.querySelector(notesEl);
+    
     }
-
     getNote(id) {
-
+        return document.querySelector('#' + id);
     }
-    addNote(note) {
-        const noteEl = document.createElement('div')
+    addNoteHtml(note) {
+
+        const noteEl = document.createElement('div');
         noteEl.classList.add('note');
-        // ...do all the things with content
-        this.getNotes().appendChild(noteEl);
-    }
-    removeNote() {
 
+        this.getNotes().appendChild(noteEl);
+        
+        const htmlTitle = document.createElement('h1');
+        const htmlContent = document.createElement('p');
+        const htmlButton = document.createElement('button');
+        const htmlTime = document.createElement('h4');
+        
+        noteEl.style.backgroundColor=note.color;
+
+        noteEl.classList.add('note');
+        noteEl.setAttribute('name', note.id);
+        htmlTitle.innerHTML = note.title;
+        htmlContent.innerHTML = note.content;
+        htmlButton.innerHTML = 'Remove'; 
+        htmlTime.innerHTML = note.createDate.toLocaleString(); 
+        htmlButton.id = note.id;
+
+        noteEl.appendChild(htmlTitle);
+        noteEl.appendChild(htmlContent);
+        noteEl.appendChild(htmlButton);
+        noteEl.appendChild(htmlTime);
+
+        return noteEl;
     }
-    getNotes() {
+    removeNote(){
+        const note = this.getNote(id);
+        const container = this.getNotesContent();
+        container.removeChild(note);
+    }
+    getNotes(){
         return this.notesObj;
     }
-
-
-
 }
-// main.js
-const notesObj = new Notes();
-const notesArr = notesObj.getNotes();
-const newNote = new Note('asd')
- 
-    const noteEl = document.createElement('div')
- noteEl.classList.add('note');
- newNote.htmlOb = noteEl;
-
-notesArr.addNote(newNote);
-
-
-somebutton.addEventListener('click',(ev) => {
-    const id = ev.target.id
-    notesObj.removeNote(id);
-})

@@ -1,0 +1,24 @@
+body{
+font-family: 'Times New Roman', Times, serif;
+height: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+background-color: burlywood;
+font-family: Arial, Helvetica, sans-serif;
+color: white;
+}
+
+#title {
+    flex: none;
+    float: left;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
+#notetitle {
+    flex: none;
+    float: right;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+}
